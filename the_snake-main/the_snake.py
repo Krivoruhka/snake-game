@@ -29,7 +29,7 @@ SPEED = 10
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 
 # Заголовок окна игрового поля:
-pygame.display.set_caption('Змейка')
+pygame.display.set_caption("Змейка")
 
 # Настройка времени:
 clock = pygame.time.Clock()
@@ -38,7 +38,7 @@ clock = pygame.time.Clock()
 # Классы игры
 class GameObject:
     """Базовый класс для игровых объектов."""
-    
+
     def __init__(self, position, body_color):
         """Инициализирует объект с позицией и цветом."""
         self.position = position
@@ -66,10 +66,7 @@ class Apple(GameObject):
 
     def draw(self):
         """Отрисовывает яблоко на экране."""
-        rect = pygame.Rect(
-            self.position,
-            (GRID_SIZE, GRID_SIZE)
-        )
+        rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
@@ -112,7 +109,7 @@ class Snake(GameObject):
         self.position = new_position
         if len(self.positions) > self.length:
             self.positions.pop()
-        if len(self.positions)>3 and self.positions[0] in self.positions[4:]:
+        if len(self.positions) > 3 and self.positions[0] in self.positions[4:]:
             self.reset()
 
     def draw(self):
