@@ -1,5 +1,5 @@
-from random import randint
 import pygame
+from random import randint
 
 # Константы для размеров поля и сетки:
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
@@ -35,7 +35,6 @@ pygame.display.set_caption("Змейка")
 clock = pygame.time.Clock()
 
 
-# Классы игры
 class GameObject:
     """Базовый класс для игровых объектов."""
 
@@ -109,7 +108,8 @@ class Snake(GameObject):
         self.position = new_position
         if len(self.positions) > self.length:
             self.positions.pop()
-        if len(self.positions) > 3 and self.positions[0] in self.positions[4:]:
+        if (len(self.positions) > 3 and 
+                self.positions[0] in self.positions[4:]):
             self.reset()
 
     def draw(self):
@@ -154,9 +154,11 @@ def handle_keys(game_object):
                 game_object.next_direction = UP
             elif event.key == pygame.K_DOWN and game_object.direction != UP:
                 game_object.next_direction = DOWN
-            elif event.key == pygame.K_LEFT and game_object.direction != RIGHT:
+            elif (event.key == pygame.K_LEFT and 
+                  game_object.direction != RIGHT):
                 game_object.next_direction = LEFT
-            elif event.key == pygame.K_RIGHT and game_object.direction != LEFT:
+            elif (event.key == pygame.K_RIGHT and 
+                  game_object.direction != LEFT):
                 game_object.next_direction = RIGHT
 
 
